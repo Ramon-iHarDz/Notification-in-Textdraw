@@ -12,6 +12,8 @@
 
 ° Adicione a função  NT_ADD(playerid, titulo, mensagem, tempo); no seu código para definir e mostrar a notificação.​
 
+° Precisa da biblioteca YSI: https://github.com/pawn-lang/YSI-Includes/releases
+
 💻 Comandos disponíveis
 
 ° Use comandos como /testen para testar a notificação no Game
