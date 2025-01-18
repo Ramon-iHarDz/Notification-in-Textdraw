@@ -20,8 +20,7 @@
 
 🎞️​ Video
 
-° Link: Em Breve
-
+° Link: https://youtu.be/PjYKgq3ogwo
 📼 Gif
 
 ![Design sem nome (3)](https://github.com/user-attachments/assets/17579ab6-a93a-4fa7-8faa-a956f4aba9d6)
