@@ -17,18 +17,12 @@ static
     TimeBarNotificacao[MAX_PLAYERS][MAX_NOTIFICACOES],
     BarNotificacao[MAX_PLAYERS][MAX_NOTIFICACOES],
     //
-    Iterator:NotificacoesIter[MAX_PLAYERS]<MAX_NOTIFICACOES>;
+    Iterator:NotificacoesIterador[MAX_PLAYERS]<MAX_NOTIFICACOES>;
 
-
-hook OnGameModeInit() {
-    Iter_Init(NotificacoesIter);
-    return true;
-}
 
 hook OnPlayerDisconnect(playerid, reason) {
-    for(new i = 0; i < MAX_NOTIFICACOES; i++)
-        if(Iter_Contains(NotificacoesIter[playerid], i))
-            RetirarNotificacao(playerid, i);
+    foreach(new i: NotificacoesIterador[playerid])
+        RetirarNotificacao(playerid, i);
     return true;
 }
 
@@ -74,12 +68,12 @@ stock NT_ADD(playerid, const titulo[], const mensagem[], tempo) { // Criar notif
     if(!IsPlayerConnected(playerid)) 
         return true;                 
    
-    new id_notificacao = Iter_Free(NotificacoesIter[playerid]);
+    new id_notificacao = Iter_Free(NotificacoesIterador<playerid>);
     
     if(id_notificacao == ITER_NONE)
         return true;                            
 
-    Iter_Add(NotificacoesIter[playerid], id_notificacao);
+    Iter_Add(NotificacoesIterador[playerid], id_notificacao);
 
     // Criar o layout da notificacao
     CriarNotificacao(playerid, id_notificacao, titulo, mensagem);
@@ -101,7 +95,7 @@ static stock RetirarNotificacao(playerid, id_notificacao) {
     // Destruir a notificacao da tela
     OcultarNotificacao(playerid, id_notificacao);
 
-    Iter_Remove(NotificacoesIter[playerid], id_notificacao);
+    Iter_Remove(NotificacoesIterador[playerid], id_notificacao);
     return true;
 }
 
